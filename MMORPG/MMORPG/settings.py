@@ -100,6 +100,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'user.User'
 
+LOGIN_URL = '/'
+LOGIN_REDIRECT_URL = '/'
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -130,8 +133,6 @@ customColorPalette = [
         },
     ]
 
-CKEDITOR_5_CUSTOM_CSS = 'path_to.css' # optional
-CKEDITOR_5_FILE_STORAGE = "path_to_storage.CustomStorage" # optional
 CKEDITOR_5_CONFIGS = {
     'default': {
         'toolbar': ['heading', '|', 'bold', 'italic', 'link',
@@ -192,3 +193,10 @@ CKEDITOR_5_CONFIGS = {
         }
     }
 }
+
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'danpilnet'
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_USE_SSL = True
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')

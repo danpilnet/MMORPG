@@ -5,6 +5,10 @@
     <title>Forum</title>
 </head>
 <body>
-
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Зарегистрироваться">
+</form>
 </body>
 </html>

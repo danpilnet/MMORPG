@@ -19,6 +19,6 @@ class Post(models.Model):
 
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
-    time_create = models.DateTimeField(auto_now_time=True)
+    time_create = models.DateTimeField(auto_now_add=True)
     category = models.CharField(max_length=15, choices=CATEGORY_NAME)
     text = CKEditor5Field('Text', config_name='extends')
