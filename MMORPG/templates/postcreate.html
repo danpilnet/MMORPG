@@ -1,0 +1,10 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.media }}
+    {{ form.as_p }}
+    <button name="buton" type="submit" value="buton">abc</button>
+</form>
+{% endblock content %}

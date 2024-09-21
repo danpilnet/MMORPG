@@ -2,13 +2,31 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <script async charset="utf-8" src="//cdn.embedly.com/widgets/platform.js"></script>
     <title>Forum</title>
 </head>
 <body>
+{% if profile %}
+<a href="{% url 'login' %}"><input type="submit" value="Авторизоваться"></a>
+{% else %}
+<h4>Вы авторизированы: {{ form_email }}
+<img src="../media/1122.jpg" width="50" height="50"></h4>
+<a href="{% url 'logout' %}"><input type="submit" value="Выйти"></a>
+{% endif %}
+{% block content %}
 <form action="" method="post">
     {% csrf_token %}
     {{ form }}
     <input type="submit" value="Зарегистрироваться">
 </form>
+{% endblock content %}
+<script>
+    document.querySelectorAll( 'oembed[url]' ).forEach( element => {
+    const anchor = document.createElement( 'a' );
+    anchor.setAttribute( 'href', element.getAttribute( 'url' ) );
+    anchor.className = 'embedly-card';
+    element.appendChild( anchor );
+});
+</script>
 </body>
 </html>
