@@ -6,13 +6,15 @@
     <title>Forum</title>
 </head>
 <body>
+{% block title %}
 {% if profile %}
 <a href="{% url 'login' %}"><input type="submit" value="Авторизоваться"></a>
 {% else %}
 <h4>Вы авторизированы: {{ form_email }}
-<img src="../media/1122.jpg" width="50" height="50"></h4>
+<img src="/media/1122.jpg" width="50" height="50"></h4>
 <a href="{% url 'logout' %}"><input type="submit" value="Выйти"></a>
 {% endif %}
+{% endblock title %}
 {% block content %}
 <form action="" method="post">
     {% csrf_token %}

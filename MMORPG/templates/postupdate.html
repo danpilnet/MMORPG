@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+
+{% block title %}
+{% if profile %}
+<a href="{% url 'login' %}"><input type="submit" value="Авторизоваться"></a>
+{% else %}
+<h4>Вы авторизированы: {{ form_email }}
+<img src="{{ pk }}/media/1122.jpg" width="50" height="50"></h4>
+<a href="{% url 'logout' %}"><input type="submit" value="Выйти"></a>
+{% endif %}
+{% endblock title %}
+{% block content %}
+<h3 align="center">Редактирование</h3>
+<form action="" method="post">{{ update }}
+    {% csrf_token %}
+    {{ form.media }}
+    {{ form.as_p }}
+<button type="submit" value="buton">Сохранить</button>
+</form>
+{% endblock content %}

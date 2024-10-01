@@ -5,7 +5,7 @@ from django import forms
 
 class PostForm(ModelForm):
 
-    def __int__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['text'].required = False
 

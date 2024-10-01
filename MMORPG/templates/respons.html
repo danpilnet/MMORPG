@@ -1,0 +1,22 @@
+{% extends 'postupdate.html' %}
+
+{% block content %}
+<h4>Ваши отклики: </h4>
+<h3 align="center">Удаление отклика</h3>
+    {% for response in user_response %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <input hidden="hidden" name="pk" value="{{ response.pk }}">
+        <h5 align="center">{{ response }}<button type="submit" value='buton'>Удалить</button></h5>
+    </form>
+    {% endfor %}
+<form action="" method="get">
+    {% csrf_token %}
+  {{ filterset.form.as_p }}
+  <input type="submit" name="submit" class="submit" value="Search">
+</form>
+{% for i in respons %}
+<h3>{{ i.pk }}-{{ i }}</h3>
+<h3>{{ i.text }}</h3>
+{% endfor %}
+{% endblock content %}

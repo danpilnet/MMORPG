@@ -22,3 +22,6 @@ class Post(models.Model):
     time_create = models.DateTimeField(auto_now_add=True)
     category = models.CharField(max_length=15, choices=CATEGORY_NAME)
     text = CKEditor5Field('Text', config_name='extends')
+
+    def __str__(self):
+        return f'{self.text}'

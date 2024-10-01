@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
     'respons.apps.ResponsConfig',
     'django_ckeditor_5',
+    'django_filters',
 ]
 
 MIDDLEWARE = [

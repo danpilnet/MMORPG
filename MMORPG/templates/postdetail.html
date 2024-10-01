@@ -1,0 +1,13 @@
+{% extends 'postupdate.html' %}
+
+{% block content %}
+<h3>Новость</h3>
+<h3>{{ detail.title }}</h3>
+<h3>{{ detail.text|safe }}</h3>
+<h3>Оставить отклик</h3>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ respons }}
+    <button type="submit" name="buton">Откликнуться</button>
+</form>
+{% endblock content %}

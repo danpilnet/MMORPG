@@ -1,0 +1,7 @@
+{% extends 'postupdate.html' %}
+
+{% block content %}
+{% for i in posts %}
+<h4>{{ i|safe }}</h4>
+{% endfor %}
+{% endblock content %}

@@ -1,9 +1,11 @@
 from django.shortcuts import render
-from .forms import RegistrationForm
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, DetailView
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.mail import EmailMultiAlternatives
 from django.contrib.auth import get_user_model, authenticate, login, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .forms import RegistrationForm
+from post.models import Post
 
 
 
@@ -64,3 +66,18 @@ class Authentication(TemplateView):
 def log_out(request):
     logout(request)
     return HttpResponseRedirect('/registration')
+
+
+class MyProfile(DetailView, LoginRequiredMixin):
+    model = get_user_model()
+    template_name = 'profile.html'
+    context_object_name = 'myprofile'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form_email'] = self.request.user.email
+        context['posts'] = Post.objects.filter(user_id=self.request.user.pk)
+        return context
+
+    def get_queryset(self):
+        return get_user_model().objects.filter(pk=self.request.user.pk)

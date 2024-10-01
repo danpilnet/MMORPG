@@ -1,6 +1,9 @@
 {% extends 'index.html' %}
 
 {% block content %}
-<h3>Новости</h3>
-{{ post }}
+<h3 align="center">Новости</h3>
+{% for i in post %}
+<h4 align="center"><strong>{{ i.title }}</strong></h4>
+<h5 align="center">{{ i.text|safe }}</h5>
+{% endfor %}
 {% endblock content %}
